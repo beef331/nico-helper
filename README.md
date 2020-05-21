@@ -15,11 +15,15 @@ import nico, level, levelmanager
 proc init()= discard #Real code should be here
 proc update(dt : Pfloat)= discard #Real code should be here
 proc draw()= discard #Real code should be here
+proc exit()= discard #Real code should be here
 
-#Using options over nilable cause the future is now.
+#Using options over nilable cause the future is now. 
+#All of these are optional.
 var thisLevel = Level(init : option[proc()](init),
                       update : option[proc(f:Pfloat)](update),
-                      draw : option[proc()](draw))
+                      draw : option[proc()](draw)
+                      exit : option[proc()](exit))
+
 proc getLevel(): Level = thisLevel
 
 addLevel(gsYourLevelNameHere, getLevel)#This adds the level to the LUT/FSM
