@@ -36,12 +36,8 @@ template addLevel*(state : static GameState, level : proc() : Level{.nimcall.})=
 
 const stateLevel = compStateLevel
 var
-    screenSize* : (int,int) = (384,288)
     onChangeState* : seq[proc(newState : GameState)]
     currentState = gsMenu
-
-proc x*(i : (int,int) | (Pint,Pint)) : int = i[0]
-proc y*(i : (int,int) | (Pint,Pint)) : int = i[1]
 
 proc changeState*(state : GameState)=
     currentState = state

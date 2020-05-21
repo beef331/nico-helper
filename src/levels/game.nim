@@ -1,6 +1,6 @@
 import nico
 import level
-import ../globalinfo
+import ../levelmanager
 
 var x,y = 0f
 let speed = 50f
@@ -23,7 +23,9 @@ proc draw()=
         for y in 0..screenHeight.div(32):
             spr(0,x * 32,y * 32, 32, 32)
 
-var thisLevel = Level(init : init, update : update, draw : draw)
+var thisLevel = Level(init : option[proc()](init),
+                      update : option[proc(f:Pfloat)](update),
+                      draw : option[proc()](draw))
 
 proc getLevel():Level = thisLevel
 

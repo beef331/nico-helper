@@ -1,6 +1,8 @@
-import nico
+import nico, options
+export options
 type
     Level* = object
-        init* : proc()
-        update* : proc(dt : Pfloat)
-        draw* : proc()
+        init* : Option[proc()]
+        update* : Option[proc(dt : Pfloat)]
+        draw* : Option[proc()]
+        exit* : Option[proc()]

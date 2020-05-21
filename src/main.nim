@@ -1,5 +1,5 @@
 import nico
-import globalinfo
+import levelmanager, settings
 importLevels #Imports all the levels so they're compiled with the project
 
 var 
@@ -11,16 +11,17 @@ proc init()=
     loadSpriteSheet(0,"floor.png")
 
 proc update(dt : Pfloat)= 
-    currentLevel.update(dt)
+    if(currentLevel.update.isSome): currentLevel.update.get()(dt)
 
 proc onStateChange(state : GameState)=
+    if(currentLevel.exit.isSome): currentLevel.exit.get()()
     currentLevel = getActiveLevel()
-    currentLevel.init()
+    if(currentLevel.init.isSome): currentLevel.init.get()()
 
 proc draw()= 
     setColor(0)
     rectfill(getCamera().x,getCamera().y,screenSize.x,screenSize.y)
-    currentLevel.draw()
+    if(currentLevel.draw.isSome): currentLevel.draw.get()()
 
 onChangeState.add(onStateChange)
 changeState(getState())

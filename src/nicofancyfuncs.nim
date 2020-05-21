@@ -1,5 +1,4 @@
 import nico
-import globalinfo
 
 
 proc sinPrint*(words : string, x,y:Pint , wobbleSpeed = 8f, wobbleScale = 1.5f, fontScale, color : Pint = 1)=

@@ -1,7 +1,8 @@
 import nico
 import level
 import ../nicofancyfuncs
-import ../globalinfo
+import ../levelmanager
+import ../settings
 
 
 let menuItems = ["Play","Options","Quit"]
@@ -39,8 +40,9 @@ proc draw()=
 
 
 
-var thisLevel = Level(init : init, update : update, draw : draw)
-
+var thisLevel = Level(init : option[proc()](init),
+                      update : option[proc(f:Pfloat)](update),
+                      draw : option[proc()](draw))
 proc getLevel(): Level = thisLevel
 
 addLevel(gsMenu, getLevel)

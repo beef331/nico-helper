@@ -11,7 +11,7 @@ type
 
 ```nim
 #in your new level file
-import nico, level, globalinfo
+import nico, level, levelmanager
 proc init()= discard #Real code should be here
 proc update(dt : Pfloat)= discard #Real code should be here
 proc draw()= discard #Real code should be here
