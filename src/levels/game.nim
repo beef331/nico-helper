@@ -23,9 +23,10 @@ proc draw()=
         for y in 0..screenHeight.div(32):
             spr(0,x * 32,y * 32, 32, 32)
 
-var thisLevel = Level(init : option[proc()](init),
-                      update : option[proc(f:Pfloat)](update),
-                      draw : option[proc()](draw))
+var thisLevel = newLevel(init,
+                         draw,
+                         nil,
+                         update)
 
 proc getLevel():Level = thisLevel
 

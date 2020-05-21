@@ -40,9 +40,11 @@ proc draw()=
 
 
 
-var thisLevel = Level(init : option[proc()](init),
-                      update : option[proc(f:Pfloat)](update),
-                      draw : option[proc()](draw))
+var thisLevel = newLevel(init,
+                         draw,
+                         nil,
+                         update)
+
 proc getLevel(): Level = thisLevel
 
 addLevel(gsMenu, getLevel)
