@@ -4,7 +4,9 @@ import ../globalinfo
 
 var x,y = 0f
 let speed = 50f
-proc init()=discard
+proc init()=
+    x = 0
+    y = 0
 
 proc update(dt : Pfloat)= 
     if(key(K_LEFT)): x -= dt * speed
@@ -25,4 +27,4 @@ var thisLevel = Level(init : init, update : update, draw : draw)
 
 proc getLevel():Level = thisLevel
 
-addLevel(gsPlaying, game.getLevel)
+addLevel(gsPlaying, getLevel)

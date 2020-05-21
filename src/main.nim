@@ -14,7 +14,7 @@ proc update(dt : Pfloat)=
     currentLevel.update(dt)
 
 proc onStateChange(state : GameState)=
-    currentLevel = getLevel()
+    currentLevel = getActiveLevel()
     currentLevel.init()
 
 proc draw()= 

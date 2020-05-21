@@ -1,5 +1,8 @@
-import nico,macros,os,strformat
+import nico,macros,os
 import /levels/level
+import gamestate
+
+export gamestate
 
 macro importLevels*(): untyped=
     var bracket  = newNimNode(nnkBracket)
@@ -23,10 +26,6 @@ macro importLevels*(): untyped=
             )
     return node
 
-type
-    GameState* = enum
-        gsMenu,gsPlaying
-
 var compStateLevel {.compileTime.} : array[GameState, proc() : Level{.nimcall.}]
 
 template addLevel*(state : static GameState, level : proc() : Level{.nimcall.})=
@@ -49,6 +48,6 @@ proc changeState*(state : GameState)=
     for x in onChangeState:
         x(state)
 
-proc getLevel*():Level= stateLevel[currentState]()
+proc getActiveLevel*():Level= stateLevel[currentState]()
 
 proc getState*():GameState = currentState

@@ -43,4 +43,4 @@ var thisLevel = Level(init : init, update : update, draw : draw)
 
 proc getLevel(): Level = thisLevel
 
-addLevel(gsMenu,title.getLevel)
+addLevel(gsMenu, getLevel)
