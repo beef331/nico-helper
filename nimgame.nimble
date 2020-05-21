@@ -5,7 +5,7 @@ author        = "Jason"
 description   = "Simple game"
 license       = "MIT"
 srcDir        = "src"
-bin           = @["nimgame"]
+bin           = @["main"]
 
 
 

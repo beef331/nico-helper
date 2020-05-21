@@ -1,6 +1,6 @@
 import nico
 import level
-import ../nicohelper
+import ../nicofancyfuncs
 import ../globalinfo
 
 

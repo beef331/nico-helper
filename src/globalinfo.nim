@@ -1,4 +1,4 @@
-import nico,macros,os
+import nico,macros,os,strformat
 import /levels/level
 
 macro importLevels*(): untyped=
@@ -31,7 +31,7 @@ var compStateLevel {.compileTime.} : array[GameState, proc() : Level{.nimcall.}]
 
 template addLevel*(state : static GameState, level : proc() : Level{.nimcall.})=
     static:
-        echo "Added Level"
+        doAssert compStateLevel[state] == nil, "Readded a level state"
         compStateLevel[state] = level
 
 
