@@ -7,7 +7,7 @@ type
         draw* : Option[proc()]
         exit* : Option[proc()]
 
-proc newLevel*(init, draw, exit: proc() = nil, update : proc(dt: Pfloat) = nil): Level =
+proc newLevel*(init, draw, exit: proc(), update : proc(dt: Pfloat)): Level =
     Level(init: option[proc()](init),
          draw: option[proc()](draw),
          exit: option[proc()](exit),
