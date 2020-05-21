@@ -16,7 +16,10 @@ proc init()= discard #Real code should be here
 proc update(dt : Pfloat)= discard #Real code should be here
 proc draw()= discard #Real code should be here
 
-var thisLevel = Level(init: init, update: update, draw: draw )
+#Using options over nilable cause the future is now.
+var thisLevel = Level(init : option[proc()](init),
+                      update : option[proc(f:Pfloat)](update),
+                      draw : option[proc()](draw))
 proc getLevel(): Level = thisLevel
 
 addLevel(gsYourLevelNameHere, getLevel)#This adds the level to the LUT/FSM
