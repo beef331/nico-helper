@@ -30,7 +30,7 @@ var compStateLevel {.compileTime.} : array[GameState, proc() : Level{.nimcall.}]
 
 template addLevel*(state : static GameState, level : proc() : Level{.nimcall.})=
     static:
-        doAssert compStateLevel[state] == nil, "Readded a level state"
+        doAssert compStateLevel[state] == nil, "Readded " & $state
         compStateLevel[state] = level
 
 
